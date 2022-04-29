@@ -1,9 +1,14 @@
-import re
-from webbrowser import get
-from utils.functions import Get_Category
-from utils.functions import Get_Books
+from utils.functions import get_categories
+from utils.functions import get_books
 
 
-resultlinks = Get_Category('a' , 'href', 'http://books.toscrape.com/index.html','category')
+def main():
+    
+    resultlinks = get_categories('a' , 'href', 'http://books.toscrape.com/index.html','category')
 
-Get_Books(resultlinks)
+    #print(resultlinks)
+    #print(len(resultlinks))
+    get_books(resultlinks)
+
+if __name__ == '__main__':
+    main()
