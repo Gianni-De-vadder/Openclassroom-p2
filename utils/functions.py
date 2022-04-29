@@ -1,10 +1,7 @@
-from operator import le
-from re import M
-import re
-from unicodedata import category
 import requests
 import bs4
 from bs4 import BeautifulSoup
+from slugify import slugify
 import csv
 main_url = 'http://books.toscrape.com/'
 links = []
