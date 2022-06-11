@@ -14,6 +14,12 @@ DATA_DIR = "data/"
 
 
 def get_soup(url):
+	"""
+	It takes a url as an argument, makes a request to that url, and returns a BeautifulSoup object
+	
+	:param url: The URL of the page you want to scrape
+	:return: A soup object
+	"""
 	response = requests.get(url)
 	if not response.ok:
 		print(f"Un problème est survenu durant la requete avec l'url : {url}")
