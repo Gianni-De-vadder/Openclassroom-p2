@@ -27,8 +27,8 @@ def get_soup(url):
 
 	soup = BeautifulSoup(response.content, "html.parser")
 	return soup	
-	
-#-------------------------------------------------------------------------------------------------------------
+
+
 #								Récupération des catégories
 def get_categories(area, what, url, search=None):
 	"""
@@ -66,7 +66,7 @@ def get_categorie_name(url: str) -> str:
 
     return categorie_name
 
-#-------------------------------------------------------------------------------------------------------------
+
 #								Récupération des Livres de la catégorie
 def get_books_urls(url_category):
 	"""
@@ -97,7 +97,6 @@ def get_books_urls(url_category):
 
 	return books_urls
 
-	
 
 def get_book_datas(book_url):
 	"""
@@ -141,11 +140,8 @@ def get_book_datas(book_url):
 	availability = availability.replace(' available)', '')
 	availability = int(availability)
  
-	
-	
 	category_name = slugify(category_name)
 	image_file =  f"{DATA_DIR}{category_name}/images/{slugify(title)}.jpg"
- 
  
 	product_informations = {}
 	product_informations['title'] = title
@@ -162,27 +158,28 @@ def get_book_datas(book_url):
  
 	return product_informations
 
-def transform_rating(rating_text):
-    rating = 0
-    if rating_text == "One":
-        rating = 1
-    elif rating_text == "Two":
-        rating = 2
-    elif rating_text == 'Three':
-        rating = 3
-    elif rating_text == "Four":
-        rating = 4
-    elif rating_text == "Five":
-        rating = 5
-    
-    return rating
 
-def list_values_to_string(input_list):
-	output_list = []
-	for element in input_list:
-		output_list.append(str(element))
-	return output_list
+def transform_rating(rating_text):
+	"""
+	Get as parameter the rating as letters and return in a digit
+	
+	:param rating_text: The text of the rating
+	:return: The rating of the book as digit
+	"""
+	rating = 0
+	if rating_text == "One":
+		rating = 1
+	elif rating_text == "Two":
+		rating = 2
+	elif rating_text == 'Three':
+		rating = 3
+	elif rating_text == "Four":
+		rating = 4
+	elif rating_text == "Five":
+		rating = 5
     
+	return rating
+
 
 def get_book_image(image_url,category_name,image_name):
 	"""
@@ -218,15 +215,5 @@ def savetocsv(category_name,books_data):
 		w = csv.DictWriter(csvfile, fieldnames=field_names)
 		w.writeheader()
 		w.writerows(books_data)
+  
 #if __name__ == "__main__":
-#csv.DictWriter
-# with open('test.csv', 'w', newline='') as csvfile:
-#     header = books_data[0].keys()
-#     fieldnames = ['first_name', 'last_name']
-#     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-
-
-# with open(monfichier.jpg, wb) as f:
-# 		write(datas)
-
-#header = books_data[0].keys()
