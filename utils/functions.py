@@ -1,14 +1,14 @@
 from os import mkdir
 from sys import exit
-from tkinter import image_names
-from turtle import title
-from unicodedata import category, name
 import requests
 import bs4
 from bs4 import BeautifulSoup
 from slugify import slugify
 import csv
-from pathlib import Path 
+from pathlib import Path
+from rich.console import Console
+from rich.table import Table
+
 MAIN_URL = 'http://books.toscrape.com/'
 DATA_DIR = "data/"
 
@@ -177,6 +177,13 @@ def transform_rating(rating_text):
     
     return rating
 
+def list_values_to_string(input_list):
+	output_list = []
+	for element in input_list:
+		output_list.append(str(element))
+	return output_list
+    
+
 def get_book_image(image_url,category_name,image_name):
 	"""
 	It takes an image url, a category name and an image name as parameters, and downloads the image to
@@ -195,8 +202,7 @@ def get_book_image(image_url,category_name,image_name):
 		with open(f"{DATA_DIR}{category_name}/images/{image_name}.jpg", "wb") as f:
 			f.write(reponse.content)
 
-
-
+    
 def savetocsv(category_name,books_data):
 	"""
 	It takes a category name and a list of dictionaries as input, and writes the list of dictionaries to
