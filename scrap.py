@@ -36,24 +36,13 @@ def main():
             books_data.append(book_data)
         i+=1
         
-<<<<<<< HEAD
-=======
-        
-            
-        # Saving the data to a csv file.
->>>>>>> 8b910bedf2af86dae8a8ee19ab41d56526b6b653
         savetocsv(category_name,books_data)
         
     #Zipping the folder "data" and saving it as "data.zip"
     print('Creating Archive...')
     shutil.make_archive("./data", 'zip', "data")    
     
-<<<<<<< HEAD
     # It checks if the file data.zip exists, if it does it print a message and removes the data directory.
-=======
-    # It checks if the file data.zip exists, if it does it prints a message and removes the data
-    # directory.
->>>>>>> 8b910bedf2af86dae8a8ee19ab41d56526b6b653
     if os.path.isfile('./data.zip'):
         print('Archive data.zip successfully created')
         print('Removing /data directory')
