@@ -45,8 +45,7 @@ def main():
     # It checks if the file data.zip exists, if it does it print a message and removes the data directory.
     if os.path.isfile('./data.zip'):
         print('Archive data.zip successfully created')
-        
-        
+    
     print('End of script.')
 
     
